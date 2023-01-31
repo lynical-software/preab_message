@@ -3,7 +3,6 @@ class ChatUser {
     required this.uid,
     required this.username,
     required this.profileImage,
-    required this.phoneNumber,
     required this.activeStatus,
     required this.created,
     required this.updated,
@@ -18,9 +17,6 @@ class ChatUser {
   final String profileImage;
   static const String profileImageKey = "profile_image";
 
-  final String phoneNumber;
-  static const String phoneNumberKey = "phone_number";
-
   final ActiveStatus? activeStatus;
   static const String activeStatusKey = "active_status";
 
@@ -34,7 +30,6 @@ class ChatUser {
     String? uid,
     String? username,
     String? profileImage,
-    String? phoneNumber,
     ActiveStatus? activeStatus,
     DateTime? created,
     DateTime? updated,
@@ -43,7 +38,6 @@ class ChatUser {
       uid: uid ?? this.uid,
       username: username ?? this.username,
       profileImage: profileImage ?? this.profileImage,
-      phoneNumber: phoneNumber ?? this.phoneNumber,
       activeStatus: activeStatus ?? this.activeStatus,
       created: created ?? this.created,
       updated: updated ?? this.updated,
@@ -55,7 +49,6 @@ class ChatUser {
       uid: json["uid"] ?? "",
       username: json["username"] ?? "",
       profileImage: json["profile_image"] ?? "",
-      phoneNumber: json["phone_number"] ?? "",
       activeStatus: json["active_status"] == null ? null : ActiveStatus.fromJson(json["active_status"]),
       created: json["created"] == null ? null : DateTime.parse(json["created"]),
       updated: json["updated"] == null ? null : DateTime.parse(json["updated"]),
@@ -66,7 +59,6 @@ class ChatUser {
         "uid": uid,
         "username": username,
         "profile_image": profileImage,
-        "phone_number": phoneNumber,
         "active_status": activeStatus?.toJson(),
         "created": created?.toIso8601String(),
         "updated": updated?.toIso8601String(),
@@ -83,7 +75,7 @@ class ActiveStatus {
   final String status;
   static const String statusKey = "status";
 
-  final String active;
+  final bool active;
   static const String activeKey = "active";
 
   final DateTime? lastUpdate;
@@ -91,7 +83,7 @@ class ActiveStatus {
 
   ActiveStatus copyWith({
     String? status,
-    String? active,
+    bool? active,
     DateTime? lastUpdate,
   }) {
     return ActiveStatus(
@@ -104,7 +96,7 @@ class ActiveStatus {
   factory ActiveStatus.fromJson(Map<String, dynamic> json) {
     return ActiveStatus(
       status: json["status"] ?? "",
-      active: json["active"] ?? "",
+      active: json["active"] ?? false,
       lastUpdate: json["last_update"] == null ? null : DateTime.parse(json["last_update"]),
     );
   }
