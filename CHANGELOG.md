@@ -1,4 +1,4 @@
-## [0.1.1] - 27 March 2023
+## [0.1.2] - 27 March 2023
 - Fix unread count
 
 ## [0.1.0] - 27 March 2023
