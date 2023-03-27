@@ -95,17 +95,15 @@ class RoomService extends FirestoreCollectionService {
   }
 
   void clearMyUnread(String roomId) {
-    collection.doc(roomId).set({
-      RoomModel.unreadKey: {
-        _me.uid: 0,
-      }
-    }, SetOptions(merge: true));
+    collection.doc(roomId).update({
+      "${RoomModel.unreadKey}.${_me.uid}": 0,
+    });
   }
 
   void updateLastMessageAndUnread(RoomModel room, MessageModel message) async {
     collection.doc(room.id).update({
-      "unread.${room.otherUser.uid}": FieldValue.increment(1),
-      "last_message": LastMessage(
+      "${RoomModel.unreadKey}.${room.otherUser.uid}": FieldValue.increment(1),
+      RoomModel.lastMessageKey: LastMessage(
         sender: message.sender!.uid,
         message: message.chatAttachment != null ? message.chatAttachment!.type : message.message,
         timestamp: message.timestamp,
