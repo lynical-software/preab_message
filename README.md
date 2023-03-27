@@ -12,5 +12,5 @@ dependencies:
   preab_message:
     git:
       url: https://github.com/lynical-software/preab_message
-      ref: v0.1.0
+      ref: v0.1.1
 ```

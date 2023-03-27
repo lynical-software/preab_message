@@ -104,9 +104,7 @@ class RoomService extends FirestoreCollectionService {
 
   void updateLastMessageAndUnread(RoomModel room, MessageModel message) async {
     collection.doc(room.id).set({
-      "unread": {
-        room.otherUser.uid: FieldValue.increment(1),
-      },
+      "unread.${room.otherUser.uid}": FieldValue.increment(1),
       "last_message": LastMessage(
         sender: message.sender!.uid,
         message: message.chatAttachment != null ? message.chatAttachment!.type : message.message,
