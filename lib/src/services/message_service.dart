@@ -45,6 +45,8 @@ class MessageService with FirestoreCollectionService {
       (event) {
         var data = event.docs;
         var messages = data.map((e) => MessageModel.fromJson(e.data())).toList();
+
+        ///Check for empty initial message which is added when created a room
         if (messages.length == 1 && messages.first.message.isEmpty && messages.first.chatAttachment == null) {
           return [];
         }

@@ -1,7 +1,5 @@
 import 'package:preab_message/preab_message.dart';
 
-import 'model_extension.dart';
-
 class RoomModel {
   RoomModel({
     required this.id,

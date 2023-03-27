@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:future_manager/future_manager.dart';
-import 'package:preab_message/src/model/model_extension.dart';
 import 'package:skadi_firebase/skadi_firebase.dart';
 
 import '../../preab_message.dart';
@@ -47,6 +46,7 @@ class MesssageController extends ChangeNotifier {
     var me = PreabSetting.instance.currentUser;
     ChatAttachment? localAttachment;
     if (file != null) {
+      ///Create a local attachment, type and url will be modify later
       localAttachment = ChatAttachment(type: "photo", url: "url", fileName: file.path);
     }
     MessageModel messageModel = MessageModel(
@@ -58,8 +58,8 @@ class MesssageController extends ChangeNotifier {
       room: room.id,
       chatAttachment: localAttachment,
       customData: customData,
-      created: now,
-      updated: now,
+      created: nowUtc,
+      updated: nowUtc,
     );
     _addNewMessage(messageModel);
     var result = await _messageService.sendMessage(messageModel, file);

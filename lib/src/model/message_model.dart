@@ -1,5 +1,4 @@
 import 'package:preab_message/preab_message.dart';
-import 'package:preab_message/src/model/model_extension.dart';
 
 class MessageModel {
   MessageModel({

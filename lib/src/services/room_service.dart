@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:preab_message/preab_message.dart';
-import 'package:preab_message/src/model/model_extension.dart';
 import 'package:skadi_firebase/skadi_firebase.dart';
 
 class RoomService extends FirestoreCollectionService {
@@ -73,8 +72,8 @@ class RoomService extends FirestoreCollectionService {
       users: users,
       userIds: users.map((e) => e.uid).toList(),
       unread: {otherUser.uid: 1, _me.uid: 0},
-      created: now,
-      updated: now,
+      created: nowUtc,
+      updated: nowUtc,
     );
     final docId = await createDocument(roomModel.toJson());
     return roomModel.copyWith(id: docId);
