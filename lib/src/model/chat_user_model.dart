@@ -26,23 +26,23 @@ class ChatUser {
   final DateTime? updated;
   static const String updatedKey = "updated";
 
-  ChatUser copyWith({
-    String? uid,
-    String? username,
-    String? profileImage,
-    ActiveStatus? activeStatus,
-    DateTime? created,
-    DateTime? updated,
-  }) {
-    return ChatUser(
-      uid: uid ?? this.uid,
-      username: username ?? this.username,
-      profileImage: profileImage ?? this.profileImage,
-      activeStatus: activeStatus ?? this.activeStatus,
-      created: created ?? this.created,
-      updated: updated ?? this.updated,
-    );
-  }
+  // ChatUser copyWith({
+  //   String? uid,
+  //   String? username,
+  //   String? profileImage,
+  //   ActiveStatus? activeStatus,
+  //   DateTime? created,
+  //   DateTime? updated,
+  // }) {
+  //   return ChatUser(
+  //     uid: uid ?? this.uid,
+  //     username: username ?? this.username,
+  //     profileImage: profileImage ?? this.profileImage,
+  //     activeStatus: activeStatus ?? this.activeStatus,
+  //     created: created ?? this.created,
+  //     updated: updated ?? this.updated,
+  //   );
+  // }
 
   factory ChatUser.fromJson(Map<String, dynamic> json) {
     return ChatUser(

@@ -1,6 +1,6 @@
 name: preab_message
 description: A chat module with Firebase.
-version: 0.1.2
+version: 0.1.3
 homepage:
 
 publish_to: "none"

@@ -1,5 +1,6 @@
-## [0.1.2] - 27 March 2023
+## [0.1.3] - 27 March 2023
 - Fix unread count
+- Remove copyWith from user
 
 ## [0.1.0] - 27 March 2023
 - Update Firebase version
