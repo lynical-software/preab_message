@@ -26,34 +26,16 @@ class ChatUser {
   final DateTime? updated;
   static const String updatedKey = "updated";
 
-  // ChatUser copyWith({
-  //   String? uid,
-  //   String? username,
-  //   String? profileImage,
-  //   ActiveStatus? activeStatus,
-  //   DateTime? created,
-  //   DateTime? updated,
-  // }) {
+  // factory ChatUser.fromJson(Map<String, dynamic> json) {
   //   return ChatUser(
-  //     uid: uid ?? this.uid,
-  //     username: username ?? this.username,
-  //     profileImage: profileImage ?? this.profileImage,
-  //     activeStatus: activeStatus ?? this.activeStatus,
-  //     created: created ?? this.created,
-  //     updated: updated ?? this.updated,
+  //     uid: json["uid"] ?? "",
+  //     username: json["username"] ?? "",
+  //     profileImage: json["profile_image"] ?? "",
+  //     activeStatus: json["active_status"] == null ? null : ActiveStatus.fromJson(json["active_status"]),
+  //     created: json["created"] == null ? null : DateTime.parse(json["created"]),
+  //     updated: json["updated"] == null ? null : DateTime.parse(json["updated"]),
   //   );
   // }
-
-  factory ChatUser.fromJson(Map<String, dynamic> json) {
-    return ChatUser(
-      uid: json["uid"] ?? "",
-      username: json["username"] ?? "",
-      profileImage: json["profile_image"] ?? "",
-      activeStatus: json["active_status"] == null ? null : ActiveStatus.fromJson(json["active_status"]),
-      created: json["created"] == null ? null : DateTime.parse(json["created"]),
-      updated: json["updated"] == null ? null : DateTime.parse(json["updated"]),
-    );
-  }
 
   Map<String, dynamic> toJson() => {
         "uid": uid,

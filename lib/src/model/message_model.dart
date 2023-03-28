@@ -71,12 +71,13 @@ class MessageModel {
   }
 
   factory MessageModel.fromJson(Map<String, dynamic> json) {
+    final userJsonMapper = PreabSetting.instance.userJsonMapper;
     return MessageModel(
       id: json["id"] ?? "",
       message: json["message"] ?? "",
       timestamp: json["timestamp"] ?? 0,
-      sender: json["sender"] == null ? null : ChatUser.fromJson(json["sender"]),
-      receiver: json["receiver"] == null ? null : ChatUser.fromJson(json["receiver"]),
+      sender: json["sender"] == null ? null : userJsonMapper(json["sender"]),
+      receiver: json["receiver"] == null ? null : userJsonMapper(json["receiver"]),
       room: json["room"] ?? "",
       chatAttachment: json["chat_attachment"] == null ? null : ChatAttachment.fromJson(json["chat_attachment"]),
       customData: json["custom_data"],

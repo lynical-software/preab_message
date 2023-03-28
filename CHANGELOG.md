@@ -1,3 +1,6 @@
+## [0.2.0] - 28 March 2023
+- add json mapper for user
+
 ## [0.1.3] - 27 March 2023
 - Fix unread count
 - Remove copyWith from user

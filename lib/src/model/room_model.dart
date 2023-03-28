@@ -52,12 +52,15 @@ class RoomModel {
     );
   }
 
-  factory RoomModel.fromJson(Map<String, dynamic> json) {
+  factory RoomModel.fromJson(
+    Map<String, dynamic> json,
+  ) {
+    final userJsonMapper = PreabSetting.instance.userJsonMapper;
     return RoomModel(
       id: json["id"] ?? "",
       lastMessage: json["last_message"] == null ? null : LastMessage.fromJson(json["last_message"]),
       unread: json["unread"],
-      users: json["users"] == null ? [] : List<ChatUser>.from(json["users"]!.map((x) => ChatUser.fromJson(x))),
+      users: json["users"] == null ? [] : List<ChatUser>.from(json["users"]!.map((x) => userJsonMapper(x))),
       userIds: json["user_ids"] == null ? [] : List<String>.from(json["user_ids"]!.map((x) => x)),
       created: json["created"] == null ? null : DateTime.parse(json["created"]),
       updated: json["updated"] == null ? null : DateTime.parse(json["updated"]),
