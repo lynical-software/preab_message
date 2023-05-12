@@ -1,5 +1,6 @@
-## [1.0.0] - 12 May 2023
+## [1.0.1] - 12 May 2023
 - stable release
+- update dependencies
 
 ## [0.2.0] - 28 March 2023
 - add json mapper for user

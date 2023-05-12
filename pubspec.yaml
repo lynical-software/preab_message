@@ -1,6 +1,6 @@
 name: preab_message
 description: A chat module with Firebase.
-version: 1.0.0
+version: 1.0.1
 homepage:
 
 publish_to: "none"
@@ -21,7 +21,7 @@ dependencies:
   skadi_firebase:
     git:
       url: https://github.com/lynical-software/skadi_firebase
-      ref: v1.0.0
+      ref: v1.0.1
 
 dev_dependencies:
   flutter_test:
