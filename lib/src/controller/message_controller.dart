@@ -7,7 +7,7 @@ import 'package:skadi_firebase/skadi_firebase.dart';
 import '../../preab_message.dart';
 import '../services/message_service.dart';
 
-class MesssageController extends ChangeNotifier {
+class MessageController extends ChangeNotifier {
   final String roomId;
   final int limit;
   final MessageService _messageService;
@@ -24,7 +24,7 @@ class MesssageController extends ChangeNotifier {
     RoomService.instance.clearMyUnread(roomId);
   }
 
-  MesssageController(this.roomId, [this.limit = 20]) : _messageService = MessageService(roomId) {
+  MessageController(this.roomId, [this.limit = 20]) : _messageService = MessageService(roomId) {
     _clearMyUnread();
     messageManager.execute(() async {
       room = await RoomService.instance.getOneRoom(roomId);

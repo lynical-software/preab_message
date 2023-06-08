@@ -1,3 +1,5 @@
+## [1.1.1] - 8 June 2023
+- Fix typo on class name
 ## [1.0.1] - 12 May 2023
 - stable release
 - update dependencies
