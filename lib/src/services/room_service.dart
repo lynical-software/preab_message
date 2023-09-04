@@ -81,8 +81,12 @@ class RoomService extends FirestoreCollectionService {
 
   ///Update room information when user navigate into chat room page
   Future<void> updateRoomsUserInfo(RoomModel room, ChatUser otherUser) async {
+    final userToJsonMapper = PreabSetting.instance.userToJsonMapper;
     collection.doc(room.id).update({
-      RoomModel.usersKey: [PreabSetting.instance.currentUser.toJson(), otherUser.toJson()]
+      RoomModel.usersKey: [
+        userToJsonMapper(PreabSetting.instance.currentUser),
+        userToJsonMapper(otherUser),
+      ]
     });
   }
 
