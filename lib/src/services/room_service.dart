@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:preab_message/preab_message.dart';
 import 'package:skadi_firebase/skadi_firebase.dart';
 
-class RoomService extends FirestoreCollectionService {
+class RoomService with FirestoreCollectionService {
   RoomService._privateConstructor();
 
   static final RoomService instance = RoomService._privateConstructor();
