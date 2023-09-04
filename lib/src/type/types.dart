@@ -1,3 +1,4 @@
 import '../../preab_message.dart';
 
-typedef UserJsonMapper = ChatUser Function(Map<String, dynamic>);
+typedef UserFromJsonMapper = ChatUser Function(Map<String, dynamic> json);
+typedef UserToJsonMapper = Map<String, dynamic> Function(ChatUser? user);

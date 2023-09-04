@@ -86,18 +86,21 @@ class MessageModel {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "message": message,
-        "timestamp": timestamp,
-        "sender": sender?.toJson(),
-        "receiver": receiver?.toJson(),
-        "room": room,
-        "chat_attachment": chatAttachment?.toJson(),
-        "custom_data": customData,
-        "created": created?.toIso8601String(),
-        "updated": updated?.toIso8601String(),
-      };
+  Map<String, dynamic> toJson() {
+    final userToJsonMapper = PreabSetting.instance.userToJsonMapper;
+    return {
+      "id": id,
+      "message": message,
+      "timestamp": timestamp,
+      "sender": userToJsonMapper(sender),
+      "receiver": userToJsonMapper(receiver),
+      "room": room,
+      "chat_attachment": chatAttachment?.toJson(),
+      "custom_data": customData,
+      "created": created?.toIso8601String(),
+      "updated": updated?.toIso8601String(),
+    };
+  }
 }
 
 class ChatAttachment {

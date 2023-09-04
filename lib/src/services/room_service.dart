@@ -89,7 +89,7 @@ class RoomService extends FirestoreCollectionService {
   Future<RoomModel> getOneRoom(String roomId) async {
     final data = await collection.doc(roomId).get();
     if (!data.exists) {
-      throw "Room doesn't exisit";
+      throw "Room doesn't exist";
     }
     return RoomModel.fromJson(data.data()!);
   }

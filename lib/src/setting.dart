@@ -27,6 +27,7 @@ class PreabSetting {
     return _roomCollection!;
   }
 
+  ////Current user
   ChatUser? _currentUser;
 
   ChatUser get currentUser {
@@ -40,10 +41,12 @@ class PreabSetting {
   set currentUser(ChatUser currentUser) {
     _currentUser = currentUser;
   }
+  ////Current user
 
-  UserJsonMapper? _userJsonMapper;
+  ////Json from mapper
+  UserFromJsonMapper? _userJsonMapper;
 
-  UserJsonMapper get userJsonMapper {
+  UserFromJsonMapper get userJsonMapper {
     assert(_userJsonMapper != null);
     if (_userJsonMapper == null) {
       throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
@@ -51,18 +54,38 @@ class PreabSetting {
     return _userJsonMapper!;
   }
 
-  set userJsonMapper(UserJsonMapper userJsonMapper) {
+  set userJsonMapper(UserFromJsonMapper userJsonMapper) {
     _userJsonMapper = userJsonMapper;
   }
 
+  ////Json from mapper
+
+  ////Json to mapper
+  UserToJsonMapper? _userToJsonMapper;
+
+  UserToJsonMapper get userToJsonMapper {
+    assert(_userToJsonMapper != null);
+    if (_userToJsonMapper == null) {
+      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
+    }
+    return _userToJsonMapper!;
+  }
+
+  set userToJsonMapper(UserToJsonMapper userToJsonMapper) {
+    _userToJsonMapper = userToJsonMapper;
+  }
+  ////Json to mapper
+
   void init({
     required ChatUser currentUser,
-    required UserJsonMapper userJsonMapper,
+    required UserFromJsonMapper userJsonMapper,
+    required UserToJsonMapper userToJsonMapper,
     String roomCollection = "rooms",
     String messageCollection = "messages",
   }) {
     _messageCollection = messageCollection;
     _userJsonMapper = userJsonMapper;
+    _userToJsonMapper = userToJsonMapper;
     _roomCollection = roomCollection;
     _currentUser = currentUser;
   }

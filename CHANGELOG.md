@@ -1,3 +1,6 @@
+## [1.2.0] - 4 Sep 2023
+- Add to json mapper
+- Bump Firebase sdk version to 10.12.0
 ## [1.1.1] - 8 June 2023
 - Fix typo on class name
 ## [1.0.1] - 12 May 2023

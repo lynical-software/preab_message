@@ -67,15 +67,18 @@ class RoomModel {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "last_message": lastMessage?.toJson(),
-        "unread": unread,
-        "users": users.map((x) => x.toJson()).toList(),
-        "user_ids": userIds.map((x) => x).toList(),
-        "created": created?.toIso8601String(),
-        "updated": updated?.toIso8601String(),
-      };
+  Map<String, dynamic> toJson() {
+    final userToJsonMapper = PreabSetting.instance.userToJsonMapper;
+    return {
+      "id": id,
+      "last_message": lastMessage?.toJson(),
+      "unread": unread,
+      "users": users.map((x) => userToJsonMapper(x)).toList(),
+      "user_ids": userIds.map((x) => x).toList(),
+      "created": created?.toIso8601String(),
+      "updated": updated?.toIso8601String(),
+    };
+  }
 }
 
 class LastMessage {

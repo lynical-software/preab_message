@@ -1,7 +1,7 @@
 # preab_message
 
 A chat module with Firebase.
-Using Firebase sdk `10.3.0`
+Using Firebase sdk `10.12.0`
 
 # Installation
 
@@ -12,5 +12,5 @@ dependencies:
   preab_message:
     git:
       url: https://github.com/lynical-software/preab_message
-      ref: v1.1.0
+      ref: v1.2.0
 ```
