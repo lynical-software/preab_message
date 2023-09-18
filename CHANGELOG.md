@@ -1,3 +1,6 @@
+## [1.4.0] - 18 Sep 2023
+- Add file md5 for chat attachment
+
 ## [1.3.2] - 4 Sep 2023
 - Add to json mapper
 - Bump Firebase sdk version to 10.12.0

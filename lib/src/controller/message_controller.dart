@@ -47,7 +47,13 @@ class MessageController extends ChangeNotifier {
     ChatAttachment? localAttachment;
     if (file != null) {
       ///Create a local attachment, type and url will be modify later
-      localAttachment = ChatAttachment(type: "photo", url: "url", fileName: file.path);
+      var md5 = await file.lastModified();
+      localAttachment = ChatAttachment(
+        type: "photo",
+        url: "url",
+        fileName: file.path,
+        fileMd5: md5.millisecondsSinceEpoch.toString(),
+      );
     }
     MessageModel messageModel = MessageModel(
       id: "",

@@ -108,6 +108,7 @@ class ChatAttachment {
     required this.type,
     required this.url,
     required this.fileName,
+    required this.fileMd5,
   });
 
   final String type;
@@ -119,15 +120,20 @@ class ChatAttachment {
   final String fileName;
   static const String fileNameKey = "file_name";
 
+  final String fileMd5;
+  static const String fileMd5Key = "file_md5";
+
   ChatAttachment copyWith({
     String? type,
     String? url,
     String? fileName,
+    String? fileMd5,
   }) {
     return ChatAttachment(
       type: type ?? this.type,
       url: url ?? this.url,
       fileName: fileName ?? this.fileName,
+      fileMd5: fileMd5 ?? this.fileMd5,
     );
   }
 
@@ -136,6 +142,7 @@ class ChatAttachment {
       type: json["type"] ?? "",
       url: json["url"] ?? "",
       fileName: json["file_name"] ?? "",
+      fileMd5: json["file_md5"] ?? "",
     );
   }
 
@@ -143,5 +150,6 @@ class ChatAttachment {
         "type": type,
         "url": url,
         "file_name": fileName,
+        "file_md5": fileMd5,
       };
 }

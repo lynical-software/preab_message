@@ -4,7 +4,12 @@ import 'package:preab_message/preab_message.dart';
 
 extension ATT on ChatAttachment {
   bool get localFileExist {
-    return File(fileName).existsSync();
+    var file = File(fileName);
+    if (file.existsSync()) {
+      var date = file.lastModifiedSync();
+      return date.toString() == fileMd5;
+    }
+    return false;
   }
 
   String get pathUri {

@@ -87,11 +87,7 @@ class MessageService with FirestoreCollectionService {
       String fileName = file.uri.pathSegments.last;
       String url = await PreabFirebaseStorage.uploadImageFile(file, fileName);
       messageModel = messageModel.copyWith(
-        chatAttachment: ChatAttachment(
-          url: url,
-          type: messageModel.chatAttachment!.type,
-          fileName: messageModel.chatAttachment!.fileName,
-        ),
+        chatAttachment: messageModel.chatAttachment?.copyWith(url: url),
       );
     }
     var docId = await createDocument(messageModel.toJson());

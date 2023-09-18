@@ -37,14 +37,14 @@ class ChatUser {
   //   );
   // }
 
-  Map<String, dynamic> toJson() => {
-        "uid": uid,
-        "username": username,
-        "profile_image": profileImage,
-        "active_status": activeStatus?.toJson(),
-        "created": created?.toIso8601String(),
-        "updated": updated?.toIso8601String(),
-      };
+  // Map<String, dynamic> toJson() => {
+  //       "uid": uid,
+  //       "username": username,
+  //       "profile_image": profileImage,
+  //       "active_status": activeStatus?.toJson(),
+  //       "created": created?.toIso8601String(),
+  //       "updated": updated?.toIso8601String(),
+  //     };
 }
 
 class ActiveStatus {

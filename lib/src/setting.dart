@@ -27,6 +27,16 @@ class PreabSetting {
     return _roomCollection!;
   }
 
+  String? _storagePath;
+
+  String get storagePath {
+    assert(_storagePath != null);
+    if (_storagePath == null) {
+      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
+    }
+    return _storagePath!;
+  }
+
   ////Current user
   ChatUser? _currentUser;
 
@@ -82,11 +92,13 @@ class PreabSetting {
     required UserToJsonMapper userToJsonMapper,
     String roomCollection = "rooms",
     String messageCollection = "messages",
+    String storagePath = "/storage",
   }) {
     _messageCollection = messageCollection;
     _userJsonMapper = userJsonMapper;
     _userToJsonMapper = userToJsonMapper;
     _roomCollection = roomCollection;
     _currentUser = currentUser;
+    _storagePath = storagePath;
   }
 }
