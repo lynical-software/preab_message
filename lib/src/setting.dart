@@ -8,12 +8,11 @@ class PreabSetting {
   static final PreabSetting instance = PreabSetting._privateConstructor();
 
   String? _messageCollection;
+  bool _initialize = false;
 
   String get messageCollection {
     assert(_messageCollection != null);
-    if (_messageCollection == null) {
-      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
-    }
+    _initCheck();
     return _messageCollection!;
   }
 
@@ -21,9 +20,7 @@ class PreabSetting {
 
   String get roomCollection {
     assert(_roomCollection != null);
-    if (_roomCollection == null) {
-      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
-    }
+    _initCheck();
     return _roomCollection!;
   }
 
@@ -31,9 +28,7 @@ class PreabSetting {
 
   String get storagePath {
     assert(_storagePath != null);
-    if (_storagePath == null) {
-      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
-    }
+    _initCheck();
     return _storagePath!;
   }
 
@@ -42,25 +37,20 @@ class PreabSetting {
 
   ChatUser get currentUser {
     assert(_currentUser != null);
-    if (_currentUser == null) {
-      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
-    }
+    _initCheck();
     return _currentUser!;
   }
 
   set currentUser(ChatUser currentUser) {
     _currentUser = currentUser;
   }
-  ////Current user
 
   ////Json from mapper
   UserFromJsonMapper? _userJsonMapper;
 
   UserFromJsonMapper get userJsonMapper {
     assert(_userJsonMapper != null);
-    if (_userJsonMapper == null) {
-      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
-    }
+    _initCheck();
     return _userJsonMapper!;
   }
 
@@ -68,23 +58,24 @@ class PreabSetting {
     _userJsonMapper = userJsonMapper;
   }
 
-  ////Json from mapper
-
   ////Json to mapper
   UserToJsonMapper? _userToJsonMapper;
 
   UserToJsonMapper get userToJsonMapper {
     assert(_userToJsonMapper != null);
-    if (_userToJsonMapper == null) {
-      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
-    }
+    _initCheck();
     return _userToJsonMapper!;
   }
 
   set userToJsonMapper(UserToJsonMapper userToJsonMapper) {
     _userToJsonMapper = userToJsonMapper;
   }
-  ////Json to mapper
+
+  void _initCheck() {
+    if (!_initialize) {
+      throw FlutterError("Please initialize PreabSetting with PreabSetting.instance.init()");
+    }
+  }
 
   void init({
     required ChatUser currentUser,
@@ -100,5 +91,6 @@ class PreabSetting {
     _roomCollection = roomCollection;
     _currentUser = currentUser;
     _storagePath = storagePath;
+    _initialize = true;
   }
 }

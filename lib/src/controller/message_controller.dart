@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -16,6 +17,8 @@ class MessageController extends ChangeNotifier {
   bool hasMoreData = true;
   late RoomModel room;
 
+  StreamSubscription<MessageModel?>? _subscription;
+
   void _addNewMessage(MessageModel message) {
     messageManager.modifyData((data) => [message, ...data!]);
   }
@@ -32,7 +35,7 @@ class MessageController extends ChangeNotifier {
       hasMoreData = data.length >= limit;
       return data;
     });
-    _messageService.recentMessageStream.listen((message) {
+    _subscription = _messageService.recentMessageStream.listen((message) {
       if (messageManager.hasData && message != null) {
         if (!message.isMine) {
           _clearMyUnread();
@@ -84,6 +87,8 @@ class MessageController extends ChangeNotifier {
 
   @override
   void dispose() {
+    _subscription?.cancel();
+    _subscription = null;
     messageManager.dispose();
     super.dispose();
   }
