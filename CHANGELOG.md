@@ -1,3 +1,7 @@
+## [1.5.0] - 2 Feb 2024
+- Update SkadiFirebase to` 1.6.0`
+- Update Firebase to `10.16`
+
 ## [1.4.0] - 18 Sep 2023
 - Add file md5 for chat attachment
 
